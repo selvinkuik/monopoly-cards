@@ -1,38 +1,125 @@
-.App {
+@font-face {
+  font-display: swap;
+  font-family: 'Kabel';
+  font-style: normal;
+  font-weight: 400;
+  src: url('Kabel-Heavy.woff2') format('woff2'),
+       url('Kabel-Heavy.woff') format('woff');
+}
+
+:root {
+  --colorChance: #fd9204;
+  --colorCommunityChest: #03b5fc;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.main {
+  display: flex;
+  font-family: 'Kabel';
+  letter-spacing: 2px;
+  line-height: 1.2;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card {
+  background-color: #fff;;
+  bottom: 10dvh;
+  left: 10vw;
+  padding: 16px;
+  position: absolute;
+  top: 10dvh;
+  right: 10vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card--chance .card__border {
+  border-color: var(--colorChance);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card--communityChest .card__border {
+  border-color: var(--colorCommunityChest);
+}
+
+.card__border {
+  align-items: center;
+  border-style: solid;
+  border-width: 4px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 16px;
 }
 
-.App-link {
-  color: #61dafb;
+.card__close {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.card__close:before,
+.card__close:after {
+  position: absolute;
+  left: 16px;
+  content: '';
+  height: 32px;
+  width: 2px;
+  background-color: #000;
+}
+
+.card__close:before {
+  transform: rotate(45deg);
+}
+
+.card__close:after {
+  transform: rotate(-45deg);
+}
+
+.card__description {
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.cardPile {
+  align-items: center;
+  display: flex;
+  font-size: 2rem;
+  height: 100dvh;
+  justify-content: center;
+  width: 50vw;
+}
+
+.cardPile--chance {
+  background-color: var(--colorChance);
+}
+
+.cardPile--communityChest {
+  background-color: var(--colorCommunityChest);
+}
+
+@media (orientation: portrait) {
+  .main {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .cardPile {
+    height: 50dvh;
+    width: 100vw;
   }
 }
